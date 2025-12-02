@@ -485,6 +485,7 @@ defmodule Pleroma.Web.ActivityPub.ActivityPub do
     |> maybe_set_thread_muted_field(opts)
     |> restrict_blocked(opts)
     |> restrict_blockers_visibility(opts)
+    |> restrict_muted(opts)
     |> restrict_recipients(recipients, opts[:user])
     |> restrict_filtered(opts)
     |> where(
