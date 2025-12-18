@@ -118,6 +118,8 @@ Has these additional fields under the `pleroma` object:
 - `unread_notifications_count`: The count of unread notifications. Only returned to the account owner.
 - `notification_settings`: object, can be absent. See `/api/v1/pleroma/notification_settings` for the parameters/keys returned.
 - `favicon`: nullable URL string, Favicon image of the user's instance
+- `avatar_description`: string, image description for user avatar, defaults to empty string
+- `header_description`: string, image description for user banner, defaults to empty string
 
 Has these additional fields under the `akkoma` object:
 
@@ -254,6 +256,8 @@ Additional parameters can be added to the JSON body/Form data:
 - `discoverable` - if true, external services (search bots) etc. are allowed to index / list the account (regardless of this setting, user will still appear in regular search results).
 - `actor_type` - the type of this account.
 - `language` - user's preferred language for receiving emails (digest, confirmation, etc.)
+- `avatar_description` - image description for user avatar
+- `header_description` - image description for user banner
 
 All images (avatar, banner and background) can be reset to the default by sending an empty string ("") instead of a file.
 

@@ -226,6 +226,8 @@ defmodule Pleroma.Web.MastodonAPI.AccountController do
       |> Maps.put_if_present(:status_ttl_days, params[:status_ttl_days], status_ttl_days_value)
       |> Maps.put_if_present(:accepts_direct_messages_from, params[:accepts_direct_messages_from])
       |> Maps.put_if_present(:permit_followback, params[:permit_followback])
+      |> Maps.put_if_present(:avatar_description, params[:avatar_description])
+      |> Maps.put_if_present(:header_description, params[:header_description])
 
     # What happens here:
     #
@@ -264,6 +266,12 @@ defmodule Pleroma.Web.MastodonAPI.AccountController do
 
       {:error, %Ecto.Changeset{errors: [background: {"file is too large", _}]}} ->
         render_error(conn, :request_entity_too_large, "File is too large")
+
+      {:error, %Ecto.Changeset{errors: [{:avatar_description, {_, _}} | _]}} ->
+        render_error(conn, :request_entity_too_large, "Avatar description is too long")
+
+      {:error, %Ecto.Changeset{errors: [{:header_description, {_, _}} | _]}} ->
+        render_error(conn, :request_entity_too_large, "Banner description is too long")
 
       _e ->
         render_error(conn, :forbidden, "Invalid request")
