@@ -1,4 +1,4 @@
-FROM postgres:14-alpine
+FROM docker.io/postgres:14-alpine
 
 ARG UID=1000
 ARG GID=1000
