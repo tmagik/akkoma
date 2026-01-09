@@ -2,11 +2,9 @@ version: "3.7"
 
 services:
   db:
-    image: akkoma-db:latest
-    build: ./docker-resources/database
+    image: docker.io/library/postgres:15
     shm_size: 4gb
     restart: unless-stopped
-    user: ${DOCKER_USER}
     environment: {
       # This might seem insecure but is usually not a problem.
       # You should leave this at the "akkoma" default.

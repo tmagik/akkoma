@@ -10,4 +10,3 @@ else
 fi
 
 $DOCKER compose build --build-arg UID=$(id -u) --build-arg GID=$(id -g) akkoma
-$DOCKER compose build --build-arg UID=$(id -u) --build-arg GID=$(id -g) db
